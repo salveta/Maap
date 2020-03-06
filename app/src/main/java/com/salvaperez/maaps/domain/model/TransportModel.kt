@@ -1,0 +1,30 @@
+package com.salvaperez.maaps.domain.model
+
+data class TransportsModel(
+    val allowDropoff: Boolean?,
+    val availableResources: Int?,
+    val batteryLevel: Int,
+    val bikesAvailable: Int?,
+    val companyZoneId: Int,
+    val engineType: String?,
+    val helmets: Int?,
+    val id: String,
+    val lat: Double?,
+    val licencePlate: String?,
+    val locationType: Int?,
+    val lon: Double?,
+    val model: String?,
+    val name: String,
+    val pricePerMinuteDriving: Double?,
+    val pricePerMinuteParking: Double?,
+    val range: Int,
+    val realTimeData: Boolean,
+    val resourceImageId: String?,
+    val resourceType: String?,
+    val scheduledArrival: Int?,
+    val seats: Int?,
+    val spacesAvailable: Int?,
+    val station: Boolean?,
+    val longitud: Double,
+    val latitud: Double
+)

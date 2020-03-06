@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Maap</string>
+    <string name="title_activity_maps">Maap Places</string>
+
+    <string name="error_retrieve_transports">Something went wrong</string>
+
+</resources>
