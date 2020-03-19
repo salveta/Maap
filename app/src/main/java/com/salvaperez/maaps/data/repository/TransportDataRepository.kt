@@ -13,7 +13,7 @@ class TransportDataRepository(private val remoteRankingDataSource: RemoteTranspo
     TransportRepository {
 
     override suspend fun getTransports(): MaapResult<MaapsError, List<TransportsModel>> {
-        val result = remoteRankingDataSource.getRanking()
+        val result = remoteRankingDataSource.getTransport()
 
         return result.fold(
             { errorEntity -> MaapResult.Failure(errorEntity.toMaapsError()) },

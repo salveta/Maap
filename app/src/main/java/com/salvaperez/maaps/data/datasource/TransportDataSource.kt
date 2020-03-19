@@ -6,6 +6,6 @@ import com.salvaperez.maaps.data.api.MaapResult
 
 interface TransportDataSource {
 
-    suspend fun getRanking(): MaapResult<ErrorEntity, List<TransportsEntity>>
+    suspend fun getTransport(): MaapResult<ErrorEntity, List<TransportsEntity>>
 
 }

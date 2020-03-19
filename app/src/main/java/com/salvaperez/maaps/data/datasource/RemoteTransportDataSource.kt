@@ -9,7 +9,7 @@ import com.salvaperez.maaps.data.api.MaapsApi
 class RemoteTransportDataSource(private val api: MaapsApi):
     TransportDataSource {
 
-    override suspend fun getRanking(): MaapResult<ErrorEntity, List<TransportsEntity>> {
+    override suspend fun getTransport(): MaapResult<ErrorEntity, List<TransportsEntity>> {
         return ApiCall.safeApiCall { api.getTransports() }
     }
 }
