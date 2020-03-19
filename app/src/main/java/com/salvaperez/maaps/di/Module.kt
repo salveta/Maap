@@ -11,6 +11,8 @@ import com.salvaperez.maaps.presentation.detail.DetailActivity
 import com.salvaperez.maaps.presentation.detail.DetailViewModel
 import com.salvaperez.maaps.presentation.main.MaapsViewModel
 import com.salvaperez.maaps.presentation.main.MapsActivity
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -37,7 +39,7 @@ fun Application.initDI() {
 
 val transports = module(override = true) {
     scope(named<MapsActivity>()) {
-        viewModel { MaapsViewModel(get()) }
+        viewModel { MaapsViewModel(get(), get()) }
         scoped { GetTransportUseCase(get()) }
     }
 
@@ -54,7 +56,7 @@ val transports = module(override = true) {
 }
 
 val dataModule = module(override = true) {
-
+    single<CoroutineDispatcher> { Dispatchers.Main }
     single<MaapsApi> { get<Retrofit>().create() }
 
     val apiTimeOutInSeconds = 60L
