@@ -3,6 +3,8 @@ package com.salvaperez.maaps.domain.use_case
 import com.salvaperez.maaps.data.api.fold
 import com.salvaperez.maaps.domain.repository.TransportRepository
 import com.salvaperez.maaps.domain.model.TransportsModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class GetTransportUseCase(private val transportRepository: TransportRepository) {
 
@@ -11,7 +13,11 @@ class GetTransportUseCase(private val transportRepository: TransportRepository) 
         onGetErrorTransport: () -> Unit
     ) {
 
-        transportRepository.getTransports().fold(
+        val result = withContext(Dispatchers.IO){
+            transportRepository.getTransports()
+        }
+
+        result.fold(
             failure = { onGetErrorTransport() },
             success = { data -> onGetTransportSuccess(data) }
         )
